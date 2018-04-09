@@ -1,5 +1,6 @@
 package com.demo.error;
 
+
 import com.google.cloud.MonitoredResource;
 import com.google.api.gax.paging.Page;
 import com.google.cloud.logging.LogEntry;
@@ -17,7 +18,7 @@ public class LoggerUtil {
 	    // Create a service object
 	    // Credentials are inferred from the environment
 	    LoggingOptions options = LoggingOptions.getDefaultInstance();
-	    Logging logging = options.getService(); 
+	    try(Logging logging = options.getService()) {
 
 	      // Create a log entry
 	      LogEntry firstEntry = LogEntry.newBuilder(StringPayload.of("message"))
@@ -33,7 +34,7 @@ public class LoggerUtil {
 	          EntryListOption.filter("logName=projects/" + options.getProjectId() + "/logs/test-log"));
 	      for (LogEntry logEntry : entries.iterateAll()) {
 	        System.out.println(logEntry);
-	      
+	      }
 	    }
 	  }
 }
