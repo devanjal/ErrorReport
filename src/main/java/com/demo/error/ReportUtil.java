@@ -14,8 +14,6 @@ public class ReportUtil {
 
 	public void report(String className, int line, String methodName, String errorMessage) throws IOException {
 		
-		ServiceContext service;
-		service.getResourceType();
 		
 		System.out.println(ServiceContext.getDefaultInstance().getResourceType() + " AND  ******" + ServiceContext.getDefaultInstance().getService());
 		ReportErrorsServiceClient reportErrorsServiceClient = ReportErrorsServiceClient.create();
