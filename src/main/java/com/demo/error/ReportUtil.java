@@ -7,11 +7,14 @@ import com.google.cloud.errorreporting.v1beta1.ReportErrorsServiceClient;
 import com.google.devtools.clouderrorreporting.v1beta1.ErrorContext;
 import com.google.devtools.clouderrorreporting.v1beta1.ProjectName;
 import com.google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent;
+import com.google.devtools.clouderrorreporting.v1beta1.ServiceContext;
 import com.google.devtools.clouderrorreporting.v1beta1.SourceLocation;
 
 public class ReportUtil {
 
 	public void report(String className, int line, String methodName, String errorMessage) throws IOException {
+		
+		System.out.println(ReportedErrorEvent.getDefaultInstance().getServiceContext());
 		
 		ReportErrorsServiceClient reportErrorsServiceClient = ReportErrorsServiceClient.create();
 		ErrorContext errorContext = ErrorContext.newBuilder()
