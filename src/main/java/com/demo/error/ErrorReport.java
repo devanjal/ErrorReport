@@ -9,7 +9,7 @@ public class ErrorReport {
 		
 		ReportUtil report = new ReportUtil();
 		String className=ErrorReport.class.getName();
-		String methodName=ErrorReport.class.getEnclosingMethod().getName();
+		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		String errorMessage="Test Code";
 	//	int line = 13;
 		report.report(className,Thread.currentThread().getStackTrace()[1].
