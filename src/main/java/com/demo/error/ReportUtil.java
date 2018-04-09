@@ -25,13 +25,16 @@ public class ReportUtil {
 		              .build())
 		          .build();
 		
+		
+		
+		ProjectName projectName = ProjectName.of(ServiceOptions.getDefaultProjectId());
 		      ReportedErrorEvent customErrorEvent = ReportedErrorEvent.getDefaultInstance()
-		          .toBuilder().setServiceContext(ServiceContext.getDefaultInstance())
+		          .toBuilder().setServiceContext(ServiceContext.newBuilder().setResourceType("ComputeEngine").setService("ErrorReportApplication").build())
 		          .setMessage(errorMessage)
 		          .setContext(errorContext)
 		          .build();
 
-		      ProjectName projectName = ProjectName.of(ServiceOptions.getDefaultProjectId());
+		      
 		      reportErrorsServiceClient.reportErrorEvent(projectName, customErrorEvent);
 	}
 }
