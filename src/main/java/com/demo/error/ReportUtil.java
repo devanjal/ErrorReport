@@ -15,7 +15,7 @@ public class ReportUtil {
 	public void report(String className, int line, String methodName, String errorMessage) throws IOException {
 		
 		
-		System.out.println(ServiceContext.getDefaultInstance().getResourceType() + " AND  ******" + ServiceContext.getDefaultInstance().getService());
+		
 		ReportErrorsServiceClient reportErrorsServiceClient = ReportErrorsServiceClient.create();
 		ErrorContext errorContext = ErrorContext.newBuilder()
 		          .setReportLocation(SourceLocation.newBuilder()
@@ -29,7 +29,8 @@ public class ReportUtil {
 		
 		ProjectName projectName = ProjectName.of(ServiceOptions.getDefaultProjectId());
 		      ReportedErrorEvent customErrorEvent = ReportedErrorEvent.getDefaultInstance()
-		          .toBuilder().setServiceContext(ServiceContext.newBuilder().setResourceType("ComputeEngine").setService("ErrorReportApplication").build())
+		          .toBuilder().setServiceContext(ServiceContext.newBuilder()
+		        		  .setService(this.getClass().getPackage().getName()).build())
 		          .setMessage(errorMessage)
 		          .setContext(errorContext)
 		          .build();

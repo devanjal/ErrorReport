@@ -8,11 +8,12 @@ public class ErrorReport {
 		System.out.println("Hello");
 		
 		ReportUtil report = new ReportUtil();
-		String className="ErrorReport.java";
-		String methodName="main()";
+		String className=ErrorReport.class.getName();
+		String methodName=ErrorReport.class.getEnclosingMethod().getName();
 		String errorMessage="Test Code";
-		int line = 13;
-		report.report(className, line, methodName, errorMessage);
+	//	int line = 13;
+		report.report(className,Thread.currentThread().getStackTrace()[1].
+			      getLineNumber(), methodName, errorMessage);
 	}
 
 }
