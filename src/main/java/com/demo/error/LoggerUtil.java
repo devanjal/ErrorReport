@@ -17,7 +17,7 @@ public class LoggerUtil {
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 
 		    // The name of the log to write to
-		    String logName = args[0];  // "my-log";
+		    String logName = "Dev-Log";  // "my-log";
 
 		    // The data to write to the log
 		    String text = "Hello, world!";
