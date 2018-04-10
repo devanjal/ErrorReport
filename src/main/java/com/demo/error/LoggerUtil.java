@@ -25,15 +25,12 @@ public class LoggerUtil {
 		public void log(Severity level, String appName, String message) throws Exception {
 			
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-
-
+		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
-		        .setResource(MonitoredResource.newBuilder("global").setType("gce_instance").build())
+		        .setResource(MonitoredResource.newBuilder("gce_instance").build())
 		        .build();
 		    logging.write(Collections.singleton(entry));
-
-		    System.out.printf("Logged: %s%n", message);
 		  }
 }
