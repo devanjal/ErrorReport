@@ -12,17 +12,17 @@ public class ErrorReport {
 		
 		LoggerUtil logger= LoggerUtil.getInstance();
 		
-		String className=ErrorReport.class.getName();
+		String appName="LOG REPORT APPLICATION FOR MID";
 		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		String errorMessage="Test Code";
 		
 /*		report.report(className,Thread.currentThread().getStackTrace()[1].
 			      getLineNumber(), methodName, errorMessage);*/
 		
-		logger.log(Severity.ERROR, className, "ERROR part");
-		logger.log(Severity.CRITICAL, className, "CRITICAL part");
-		logger.log(Severity.WARNING, className, "WARNING part");
-		logger.log(Severity.ALERT, className, "ALERT part");
+		logger.log(Severity.ERROR, appName, "ERROR part");
+		logger.log(Severity.CRITICAL, appName, "CRITICAL part");
+		logger.log(Severity.WARNING, appName, "WARNING part");
+		logger.log(Severity.ALERT, appName, "ALERT part");
 	}
 
 }
