@@ -19,15 +19,15 @@ public class LoggerUtil {
 
 		    String text = "Danal StackDriver Testing";
 
-		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(text))
+		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(text + "ERROR"))
 		        .setSeverity(Severity.ERROR)
 		        .setLogName(logName)
 		        .setResource(MonitoredResource.newBuilder("global").build())
 		        .build();
-		    LogEntry entry2 = LogEntry.newBuilder(StringPayload.of(text))
+		    LogEntry entry2 = LogEntry.newBuilder(StringPayload.of(text + "INFO"))
 			        .setSeverity(Severity.INFO)
 			        .setLogName(logName)
-			        .setResource(MonitoredResource.newBuilder("gce_instance").build())
+			        .setResource(MonitoredResource.newBuilder("global").build())
 			        .build();
 
 		    logging.write(Collections.singleton(entry));
