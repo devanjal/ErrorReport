@@ -2,39 +2,31 @@ package com.demo.error;
 
 
 import com.google.cloud.MonitoredResource;
-import com.google.api.gax.paging.Page;
 import com.google.cloud.logging.LogEntry;
 import com.google.cloud.logging.Logging;
-import com.google.cloud.logging.Logging.EntryListOption;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
-
-
-
+import com.google.cloud.logging.Severity;
 
 import java.util.Collections;
 public class LoggerUtil {
-	public static void main(String... args) throws Exception {
-	    // Create a service object
-	    // Credentials are inferred from the environment
-	    LoggingOptions options = LoggingOptions.getDefaultInstance();
-	    try(Logging logging = options.getService()) {
 
-	      // Create a log entry
-	      LogEntry firstEntry = LogEntry.newBuilder(StringPayload.of("message"))
-	          .setLogName("test-log")
-	          .setResource(MonitoredResource.newBuilder("global")
-	              .addLabel("project_id", options.getProjectId())
-	              .build())
-	          .build();
-	      logging.write(Collections.singleton(firstEntry));
+		public static void main(String... args) throws Exception {
+			
+		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 
-	      // List log entries
-	      Page<LogEntry> entries = logging.listLogEntries(
-	          EntryListOption.filter("logName=projects/" + options.getProjectId() + "/logs/test-log"));
-	      for (LogEntry logEntry : entries.iterateAll()) {
-	        System.out.println(logEntry);
-	      }
-	    }
-	  }
+		    String logName = "test_logs_danal";
+
+		    String text = "Danal StackDriver Testing";
+
+		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(text))
+		        .setSeverity(Severity.ERROR)
+		        .setLogName(logName)
+		        .setResource(MonitoredResource.newBuilder("global").build())
+		        .build();
+
+		    logging.write(Collections.singleton(entry));
+
+		    System.out.printf("Logged: %s%n", text);
+		  }
 }
