@@ -11,7 +11,7 @@ import com.google.cloud.logging.Severity;
 import java.util.Collections;
 public class LoggerUtil {
 
-		public static void log() throws Exception {
+		public static void main(String args[]) throws Exception {
 			
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 
