@@ -12,7 +12,7 @@ public class ErrorReport {
 		
 		LoggerUtil logger= LoggerUtil.getInstance();
 		
-		String appName="LOG REPORT APPLICATION FOR MID";
+		String appName="MIDlogDemo";
 		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		String errorMessage="Test Code";
 		

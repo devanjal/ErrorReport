@@ -27,7 +27,7 @@ public class LoggerUtil {
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 
 
-		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message + "ERROR"))
+		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
 		        .setResource(MonitoredResource.newBuilder("global").setType("gce_instance").build())
