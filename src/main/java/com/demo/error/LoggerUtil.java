@@ -24,8 +24,14 @@ public class LoggerUtil {
 		        .setLogName(logName)
 		        .setResource(MonitoredResource.newBuilder("global").build())
 		        .build();
+		    LogEntry entry2 = LogEntry.newBuilder(StringPayload.of(text))
+			        .setSeverity(Severity.INFO)
+			        .setLogName(logName)
+			        .setResource(MonitoredResource.newBuilder("gce_instance").build())
+			        .build();
 
 		    logging.write(Collections.singleton(entry));
+		    logging.write(Collections.singleton(entry2));
 
 		    System.out.printf("Logged: %s%n", text);
 		  }
