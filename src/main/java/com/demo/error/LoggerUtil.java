@@ -11,7 +11,7 @@ import com.google.cloud.logging.Severity;
 import java.util.Collections;
 public class LoggerUtil {
 
-		public static void main(String... args) throws Exception {
+		public static void log() throws Exception {
 			
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 
@@ -27,7 +27,7 @@ public class LoggerUtil {
 		    LogEntry entry2 = LogEntry.newBuilder(StringPayload.of(text + "INFO"))
 			        .setSeverity(Severity.INFO)
 			        .setLogName(logName)
-			        .setResource(MonitoredResource.newBuilder("global").build())
+			        .setResource(MonitoredResource.newBuilder("global").setType("gce_instance").build())
 			        .build();
 
 		    logging.write(Collections.singleton(entry));
