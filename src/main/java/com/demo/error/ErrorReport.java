@@ -5,12 +5,14 @@ import java.io.IOException;
 import com.google.cloud.logging.Severity;
 
 public class ErrorReport {
+	
+	private static LoggerUtil logger= LoggerUtil.getInstance();
 
 	public static void main(String[] args) throws Exception {
 		
 		ReportUtil report = new ReportUtil();
 		
-		LoggerUtil logger= LoggerUtil.getInstance();
+	//	LoggerUtil logger= LoggerUtil.getInstance();
 		
 		String appName="MIDlogDemo";
 		
