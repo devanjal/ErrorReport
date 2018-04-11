@@ -45,7 +45,7 @@ public class StatsReport {
 			    Map<String, String> metricLabels = new HashMap<String, String>();
 			    metricLabels.put("Site_Count", "MID");
 			    Metric metric = Metric.newBuilder()
-			        .setType("custom.googleapis.com/my_metric")
+			        .setType("custom.googleapis.com/custom/my_metric")
 			        .putAllLabels(metricLabels)
 			        .build();
 
@@ -53,7 +53,7 @@ public class StatsReport {
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
-			        .setType("gce_instance")
+			        .setType("global")
 			        .putAllLabels(resourceLabels)
 			        .build();
 
