@@ -44,7 +44,9 @@ public class ReportUtil {
 		      ReportedErrorEvent customErrorEvent = ReportedErrorEvent.getDefaultInstance()
 		          .toBuilder()
 		          .setServiceContext(ServiceContext.newBuilder()
-		        		  .setService(appName).build())
+		        		  .setService(appName)
+		        		  .setResourceType("gce_instance")
+		        		  .build())
 		          .setMessage(errorMessage)
 		          .setContext(errorContext)
 		          .build();
