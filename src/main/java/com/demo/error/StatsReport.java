@@ -2,6 +2,7 @@ package com.demo.error;
 
 import com.google.api.Metric;
 import com.google.api.MonitoredResource;
+import com.google.cloud.ServiceOptions;
 import com.google.cloud.monitoring.v3.MetricServiceClient;
 import com.google.monitoring.v3.Point;
 import com.google.monitoring.v3.ProjectName;
@@ -23,7 +24,7 @@ public class StatsReport {
 		
 		
 		// TODO Auto-generated method stub
-		 String projectId = System.getProperty("projectId");
+		 String projectId = ServiceOptions.getDefaultProjectId();
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
