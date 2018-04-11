@@ -30,7 +30,7 @@ public class StatsReport {
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
-			        .setDoubleValue(123.45)
+			        .setDoubleValue(923.45)
 			        .build();
 			    Point point = Point.newBuilder()
 			        .setInterval(interval)
@@ -39,7 +39,7 @@ public class StatsReport {
 			    List<Point> pointList = new ArrayList<Point>();
 			    pointList.add(point);
 
-			    ProjectName name = ProjectName.create(projectId);
+			    ProjectName name = ProjectName.of(projectId);
 
 			    // Prepares the metric descriptor
 			    Map<String, String> metricLabels = new HashMap<String, String>();
