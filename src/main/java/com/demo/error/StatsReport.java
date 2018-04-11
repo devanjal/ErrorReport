@@ -18,19 +18,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class StatsReport {
+	
+	 private static StatsReport instance = null;
+	 
+	   protected StatsReport() {
+		   
+	   }
+	   
+	   public static StatsReport getInstance() {
+	      if(instance == null) {
+	         instance = new StatsReport();
+	      }
+	      return instance;
+	   }
 
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) throws Exception {
+	public void writeStatsData(String metricUrl, String projectId, long data, String categoryKey, String categoryValue) throws Exception {
 		
-		
-		// TODO Auto-generated method stub
-		 String projectId = ServiceOptions.getDefaultProjectId();
+		// String projectId = ServiceOptions.getDefaultProjectId();
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
-			        .setDoubleValue(1923.45)
+			        .setDoubleValue(data)
 			        .build();
 			    Point point = Point.newBuilder()
 			        .setInterval(interval)
@@ -40,16 +51,14 @@ public class StatsReport {
 			    pointList.add(point);
 
 			    ProjectName name = ProjectName.of(projectId);
-
-			    // Prepares the metric descriptor
+			    
 			    Map<String, String> metricLabels = new HashMap<String, String>();
-			    metricLabels.put("Site_Count", "MID");
+			    metricLabels.put(categoryKey, categoryValue);
 			    Metric metric = Metric.newBuilder()
-			        .setType("custom.googleapis.com/custom/devanjal")
+			        .setType("custom.googleapis.com/"+metricUrl)
 			        .putAllLabels(metricLabels)
 			        .build();
 
-			    // Prepares the monitored resource descriptor
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
@@ -57,7 +66,6 @@ public class StatsReport {
 			        .putAllLabels(resourceLabels)
 			        .build();
 
-			    // Prepares the time series request
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
 			        .setMetric(metric)
 			        .setResource(resource)
@@ -71,7 +79,6 @@ public class StatsReport {
 			        .addAllTimeSeries(timeSeriesList)
 			        .build();
 
-			    // Writes time series data
 			    metricServiceClient.createTimeSeries(request);
 
 			    System.out.printf("Done writing time series data.%n");
