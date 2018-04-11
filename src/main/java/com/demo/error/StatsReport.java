@@ -30,7 +30,7 @@ public class StatsReport {
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
-			        .setDoubleValue(923.45)
+			        .setDoubleValue(1923.45)
 			        .build();
 			    Point point = Point.newBuilder()
 			        .setInterval(interval)
@@ -43,7 +43,7 @@ public class StatsReport {
 
 			    // Prepares the metric descriptor
 			    Map<String, String> metricLabels = new HashMap<String, String>();
-			    metricLabels.put("payment_type", "Paypal");
+			    metricLabels.put("Site_Count", "MID");
 			    Metric metric = Metric.newBuilder()
 			        .setType("custom.googleapis.com/my_metric")
 			        .putAllLabels(metricLabels)
@@ -53,7 +53,7 @@ public class StatsReport {
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
-			        .setType("global")
+			        .setType("gce_instance")
 			        .putAllLabels(resourceLabels)
 			        .build();
 
