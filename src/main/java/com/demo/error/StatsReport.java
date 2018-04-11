@@ -2,7 +2,6 @@ package com.demo.error;
 
 import com.google.api.Metric;
 import com.google.api.MonitoredResource;
-import com.google.cloud.ServiceOptions;
 import com.google.cloud.monitoring.v3.MetricServiceClient;
 import com.google.monitoring.v3.Point;
 import com.google.monitoring.v3.ProjectName;
@@ -15,22 +14,21 @@ import com.google.monitoring.v3.CreateTimeSeriesRequest;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class StatsReport {
 
-	public static void main(String[] args) throws Exception {
-		String projectId =ServiceOptions.getDefaultProjectId();
-		
-		ProjectName projectName = ProjectName.of(ServiceOptions.getDefaultProjectId());
+	public static void main(String[] args) throws IOException, GeneralSecurityException {
+		String projectId = System.getProperty("projectId");
 		
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
-			        .setDoubleValue(123.45) //
+			        .setDoubleValue(123.45)
 			        .build();
 			    Point point = Point.newBuilder()
 			        .setInterval(interval)
@@ -39,13 +37,13 @@ public class StatsReport {
 			    List<Point> pointList = new ArrayList<Point>();
 			    pointList.add(point);
 
-			   // ProjectName name = ProjectName.create(projectId);
+			    ProjectName name = ProjectName.create(projectId);
 
 			    // Prepares the metric descriptor
 			    Map<String, String> metricLabels = new HashMap<String, String>();
-			    metricLabels.put("payment_type", "Paypal"); //
+			    metricLabels.put("payment_type", "Paypal");
 			    Metric metric = Metric.newBuilder()
-			        .setType("custom.googleapis.com/my_metric")//
+			        .setType("custom.googleapis.com/my_metric")
 			        .putAllLabels(metricLabels)
 			        .build();
 
@@ -53,7 +51,7 @@ public class StatsReport {
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
-			        .setType("gce_instance")
+			        .setType("global")
 			        .putAllLabels(resourceLabels)
 			        .build();
 
@@ -67,7 +65,7 @@ public class StatsReport {
 			    timeSeriesList.add(timeSeries);
 
 			    CreateTimeSeriesRequest request = CreateTimeSeriesRequest.newBuilder()
-			        .setNameWithProjectName(projectName)
+			        .setNameWithProjectName(name)
 			        .addAllTimeSeries(timeSeriesList)
 			        .build();
 
