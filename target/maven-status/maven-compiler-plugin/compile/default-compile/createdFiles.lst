@@ -1,1 +1,3 @@
 com\demo\error\ErrorReport.class
+com\demo\error\LoggerUtil.class
+com\demo\error\ReportUtil.class

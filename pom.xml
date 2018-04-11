@@ -15,6 +15,12 @@
   <artifactId>google-cloud-logging</artifactId>
   <version>1.24.1</version>
 </dependency>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-monitoring</artifactId>
+      <version>0.34.0-beta</version>
+    </dependency>
+
 
   </dependencies>
   
