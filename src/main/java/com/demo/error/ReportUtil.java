@@ -12,7 +12,20 @@ import com.google.devtools.clouderrorreporting.v1beta1.SourceLocation;
 
 public class ReportUtil {
 
-	public void report(String className, int line, String methodName, String errorMessage) throws IOException {
+	
+	 private static ReportUtil instance = null;
+	 
+	   protected ReportUtil() {
+		   
+	   }
+	   
+	   public static ReportUtil getInstance() {
+	      if(instance == null) {
+	         instance = new ReportUtil();
+	      }
+	      return instance;
+	   }
+	public void report(String className, int line, String methodName, String errorMessage, String appName) throws IOException {
 		
 		
 		
@@ -29,13 +42,14 @@ public class ReportUtil {
 		
 		ProjectName projectName = ProjectName.of(ServiceOptions.getDefaultProjectId());
 		      ReportedErrorEvent customErrorEvent = ReportedErrorEvent.getDefaultInstance()
-		          .toBuilder().setServiceContext(ServiceContext.newBuilder()
-		        		  .setService(this.getClass().getPackage().getName()).build())
+		          .toBuilder()
+		          .setServiceContext(ServiceContext.newBuilder()
+		        		  .setService(appName).build())
 		          .setMessage(errorMessage)
 		          .setContext(errorContext)
 		          .build();
 
 		      
-		      reportErrorsServiceClient.reportErrorEvent(projectName, customErrorEvent);
+	  reportErrorsServiceClient.reportErrorEvent(projectName, customErrorEvent);
 	}
 }

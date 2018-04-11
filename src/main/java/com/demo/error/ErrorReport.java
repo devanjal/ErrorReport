@@ -8,19 +8,17 @@ public class ErrorReport {
 	
 	private static LoggerUtil logger= LoggerUtil.getInstance();
 
+	private static ReportUtil reporter= ReportUtil.getInstance();
+	
+	
 	public static void main(String[] args) throws Exception {
 		
-		ReportUtil report = new ReportUtil();
+		String appName="ErrorLogUtils";
 		
-	//	LoggerUtil logger= LoggerUtil.getInstance();
+		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		
-		String appName="MIDlogDemo";
-		
-//		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
-//		String errorMessage="Test Code";
-		
-/*		report.report(className,Thread.currentThread().getStackTrace()[1].
-			      getLineNumber(), methodName, errorMessage);*/
+		reporter.report(ErrorReport.class.getName(), Thread.currentThread().getStackTrace()[1].
+			      getLineNumber(), methodName, "Report Error Message", appName);
 		
 		logger.log(Severity.ERROR, appName, "ERROR part");
 		
