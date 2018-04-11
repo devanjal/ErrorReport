@@ -1,6 +1,7 @@
 package com.demo.error;
 
 import com.google.api.Metric;
+import com.google.api.MetricDescriptor.MetricKind;
 import com.google.api.MonitoredResource;
 import com.google.cloud.ServiceOptions;
 import com.google.cloud.monitoring.v3.MetricServiceClient;
@@ -55,7 +56,7 @@ public class StatsReport {
 			    Map<String, String> metricLabels = new HashMap<String, String>();
 			    metricLabels.put(categoryKey, categoryValue);
 			    Metric metric = Metric.newBuilder()
-			        .setType("custom.googleapis.com/"+metricUrl)
+			        .setType("custom.googleapis.com/custom/"+metricUrl)
 			        .putAllLabels(metricLabels)
 			        .build();
 
@@ -68,6 +69,7 @@ public class StatsReport {
 
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
 			        .setMetric(metric)
+			        .setMetricKind(MetricKind.CUMULATIVE)
 			        .setResource(resource)
 			        .addAllPoints(pointList)
 			        .build();

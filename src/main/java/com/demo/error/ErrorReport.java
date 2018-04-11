@@ -18,10 +18,17 @@ public class ErrorReport {
 		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		
 		
-		writer.writeStatsData("devanjal", "wise-diagram-197921", 11111111, "site_count", "MID");
+		writer.writeStatsData("metricUrl", "wise-diagram-197921", 123456789, "statsCategory", "MID");
 		
-		reporter.report(ErrorReport.class.getName(), Thread.currentThread().getStackTrace()[1].
-			      getLineNumber(), methodName, "Report Error Message in wise-diagram-197921", appName);
+		
+		
+		
+		
+		reporter.report(ErrorReport.class.getName(), 27, methodName, "Report Error Message in wise-diagram-197921", appName);
+		
+		
+		
+		
 		
 		logger.log(Severity.ERROR, appName, "ERROR part");
 		
