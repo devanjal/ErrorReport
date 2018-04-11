@@ -44,7 +44,6 @@ public class StatsReport {
 			    // Prepares the metric descriptor
 			    Map<String, String> metricLabels = new HashMap<String, String>();
 			    metricLabels.put("Site_Count", "MID");
-			    metricLabels.put("Site_Count", "Other");
 			    Metric metric = Metric.newBuilder()
 			        .setType("custom.googleapis.com/custom/devanjal")
 			        .putAllLabels(metricLabels)
