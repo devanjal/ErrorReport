@@ -1,6 +1,5 @@
 package com.demo.error;
 
-import java.io.IOException;
 
 import com.google.cloud.logging.Severity;
 
@@ -16,17 +15,14 @@ public class ErrorReport {
 		
 		String appName="ErrorLogUtils";
 		
-		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();	
+		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
+		
 		
 		writer.writeStatsData("devanjal", "wise-diagram-197921", 11111111, "site_count", "MID");
 		
-		try {
-		throw new RuntimeException();
-		}
-		catch (RuntimeException e) {
-			reporter.report(ErrorReport.class.getName(), Thread.currentThread().getStackTrace()[1].
-				      getLineNumber(), methodName, e.fillInStackTrace().toString() , appName);
-		}
+		reporter.report(ErrorReport.class.getName(), Thread.currentThread().getStackTrace()[1].
+			      getLineNumber(), methodName, "Report Error Message in wise-diagram-197921", appName);
+		
 		logger.log(Severity.ERROR, appName, "ERROR part");
 		
 		logger.log(Severity.CRITICAL, appName, "CRITICAL part");
