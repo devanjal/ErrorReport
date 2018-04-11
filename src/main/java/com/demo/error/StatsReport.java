@@ -43,8 +43,8 @@ public class StatsReport {
 
 			    // Prepares the metric descriptor
 			    Map<String, String> metricLabels = new HashMap<String, String>();
-			    metricLabels.put("Site_Count", "MID");
-			    metricLabels.put("Other_Count", "Other");
+//			    metricLabels.put("Site_Count", "MID");
+//			    metricLabels.put("Other_Count", "Other");
 			    Metric metric = Metric.newBuilder()
 			        .setType("custom.googleapis.com/custom/devanjal")
 			        .putAllLabels(metricLabels)
@@ -54,8 +54,8 @@ public class StatsReport {
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
-			        .setType("global")
-			        .putAllLabels(resourceLabels)
+//			        .setType("global")
+//			        .putAllLabels(resourceLabels)
 			        .build();
 
 			    // Prepares the time series request
