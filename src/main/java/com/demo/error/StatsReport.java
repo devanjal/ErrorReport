@@ -54,8 +54,8 @@ public class StatsReport {
 			    Map<String, String> resourceLabels = new HashMap<String, String>();
 			    resourceLabels.put("project_id", projectId);
 			    MonitoredResource resource = MonitoredResource.newBuilder()
-//			        .setType("global")
-//			        .putAllLabels(resourceLabels)
+			        .setType("global")
+			        .putAllLabels(resourceLabels)
 			        .build();
 
 			    // Prepares the time series request
