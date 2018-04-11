@@ -11,8 +11,6 @@ import com.google.monitoring.v3.TypedValue;
 import com.google.protobuf.util.Timestamps;
 import com.google.monitoring.v3.CreateTimeSeriesRequest;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -20,9 +18,12 @@ import java.util.List;
 import java.util.Map;
 public class StatsReport {
 
-	public static void main(String[] args) throws IOException, GeneralSecurityException {
-		String projectId = System.getProperty("projectId");
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws Exception {
 		
+		
+		// TODO Auto-generated method stub
+		 String projectId = System.getProperty("projectId");
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
 			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
@@ -76,5 +77,6 @@ public class StatsReport {
 
 			    metricServiceClient.close();
 	}
+
 
 }
