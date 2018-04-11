@@ -25,7 +25,7 @@ public class ErrorReport {
 		}
 		catch (RuntimeException e) {
 			reporter.report(ErrorReport.class.getName(), Thread.currentThread().getStackTrace()[1].
-				      getLineNumber(), methodName, e.getStackTrace().toString() , appName);
+				      getLineNumber(), methodName, e.toString() , appName);
 		}
 		logger.log(Severity.ERROR, appName, "ERROR part");
 		
