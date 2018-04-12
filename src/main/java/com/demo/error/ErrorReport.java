@@ -18,7 +18,7 @@ public class ErrorReport {
 		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		
 		
-		writer.writeStatsData("devanjal", "wise-diagram-197921", 123456789, "statsCategory", "MID");
+		writer.writeStatsData("metricUrl", "wise-diagram-197921", 31111111, "statsCategory", "MID");
 		
 		
 		
