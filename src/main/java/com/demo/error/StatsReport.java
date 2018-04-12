@@ -68,7 +68,7 @@ public class StatsReport {
 			        .build();
 
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
-			        .setMetric(metric).setMetricKind(MetricKind.DELTA)
+			        .setMetric(metric).setMetricKind(MetricKind.DELTA).setMetricKindValue(21111111)
 			        .setResource(resource)
 			        .addAllPoints(pointList)
 			        .build();
