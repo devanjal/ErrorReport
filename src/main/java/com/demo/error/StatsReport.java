@@ -10,6 +10,7 @@ import com.google.monitoring.v3.ProjectName;
 import com.google.monitoring.v3.TimeInterval;
 import com.google.monitoring.v3.TimeSeries;
 import com.google.monitoring.v3.TypedValue;
+import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
 import com.google.monitoring.v3.CreateTimeSeriesRequest;
 
@@ -39,7 +40,9 @@ public class StatsReport {
 		// String projectId = ServiceOptions.getDefaultProjectId();
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
-			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
+			    //    .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
+				 .setStartTime(Timestamps.parse("2018-03-12T08:01:23.045123456Z"))
+				 .setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
 			        .setDoubleValue(data)
@@ -69,8 +72,6 @@ public class StatsReport {
 
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
 			        .setMetric(metric)
-			        .setMetricKind(MetricKind.CUMULATIVE)
-			        .setMetricKindValue(MetricKind.CUMULATIVE_VALUE)
 			        .setResource(resource)
 			        .addAllPoints(pointList)
 			        .build();
