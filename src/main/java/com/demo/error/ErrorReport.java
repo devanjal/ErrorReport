@@ -18,10 +18,12 @@ public class ErrorReport {
 		String methodName=Thread.currentThread().getStackTrace()[1].getMethodName();
 		
 		
-		for(int i= 0 ; i<5; i++) {
-		writer.writeStatsData("devanjal", "wise-diagram-197921", 11111111, "site_count", "MID");
+		for(int i= 0 ; i<10; i++) {
+			logger.log(Severity.CRITICAL, appName, "CRITICAL part");
 		}
 		
+		
+		writer.writeStatsData("devanjal", "wise-diagram-197921", 11111111, "site_count", "MID");
 		
 		
 		
