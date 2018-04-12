@@ -34,17 +34,15 @@ public class StatsReport {
 	      return instance;
 	   }
 
-	   private static final long time = System.currentTimeMillis();
 	@SuppressWarnings("deprecation")
 	public void writeStatsData(String metricUrl, String projectId, long data, String categoryKey, String categoryValue) throws Exception {
 		
-		System.out.println(time+"\n");
 		// String projectId = ServiceOptions.getDefaultProjectId();
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
-			       .setEndTime(Timestamps.fromMillis(time))
+			        .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
 			//	 .setStartTime(Timestamps.parse("2018-04-12T08:01:23.045123456Z"))
-				 //.setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
+			//	 .setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
 			        .setDoubleValue(data)
@@ -61,7 +59,7 @@ public class StatsReport {
 			    Map<String, String> metricLabels = new HashMap<String, String>();
 			    metricLabels.put(categoryKey, categoryValue);
 			    Metric metric = Metric.newBuilder()
-				        .setType("custom.googleapis.com/custom/"+metricUrl)
+				        .setType("cloudtasks.googleapis.com/api/request_count")
 				        .putAllLabels(metricLabels)
 				        .build();
 
@@ -75,7 +73,7 @@ public class StatsReport {
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
 			        .setMetric(metric)
 			        .setResource(resource)
-			        .addAllPoints(pointList)
+			     //   .addAllPoints(pointList)
 			        .build();
 			    List<TimeSeries> timeSeriesList = new ArrayList<TimeSeries>();
 			    timeSeriesList.add(timeSeries);
