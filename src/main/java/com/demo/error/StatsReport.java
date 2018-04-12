@@ -59,7 +59,7 @@ public class StatsReport {
 			    Map<String, String> metricLabels = new HashMap<String, String>();
 			    metricLabels.put(categoryKey, categoryValue);
 			    Metric metric = Metric.newBuilder()
-				        .setType("agent.googleapis.com/agent/api_request_count")
+				        .setType("custom.googleapis.com/custom/"+metricUrl)
 				        .putAllLabels(metricLabels)
 				        .build();
 
