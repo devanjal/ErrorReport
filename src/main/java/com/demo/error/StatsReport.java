@@ -41,7 +41,7 @@ public class StatsReport {
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
 			    //    .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
-				 .setStartTime(Timestamps.parse("2018-03-12T08:01:23.045123456Z"))
+			//	 .setStartTime(Timestamps.parse("2018-04-12T08:01:23.045123456Z"))
 				 .setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
