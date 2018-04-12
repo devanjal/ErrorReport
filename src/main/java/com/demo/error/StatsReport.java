@@ -73,7 +73,7 @@ public class StatsReport {
 			    TimeSeries timeSeries = TimeSeries.newBuilder()
 			        .setMetric(metric)
 			        .setResource(resource)
-			     //   .addAllPoints(pointList)
+			        .addAllPoints(pointList)
 			        .build();
 			    List<TimeSeries> timeSeriesList = new ArrayList<TimeSeries>();
 			    timeSeriesList.add(timeSeries);
