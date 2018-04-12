@@ -34,15 +34,17 @@ public class StatsReport {
 	      return instance;
 	   }
 
+	   private static final long time = System.currentTimeMillis();
 	@SuppressWarnings("deprecation")
 	public void writeStatsData(String metricUrl, String projectId, long data, String categoryKey, String categoryValue) throws Exception {
 		
+		System.out.println(time+"\n");
 		// String projectId = ServiceOptions.getDefaultProjectId();
 		 MetricServiceClient metricServiceClient = MetricServiceClient.create();
 		 TimeInterval interval = TimeInterval.newBuilder()
-			    //    .setEndTime(Timestamps.fromMillis(System.currentTimeMillis()))
+			       .setEndTime(Timestamps.fromMillis(time))
 			//	 .setStartTime(Timestamps.parse("2018-04-12T08:01:23.045123456Z"))
-				 .setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
+				 //.setEndTime(Timestamps.parse("2018-04-12T09:01:23.045123456Z"))
 			        .build();
 			    TypedValue value = TypedValue.newBuilder()
 			        .setDoubleValue(data)
