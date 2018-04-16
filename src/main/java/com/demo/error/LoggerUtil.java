@@ -49,7 +49,7 @@ public class LoggerUtil {
 		    List<FieldDescriptor> list =ResourceInfo.getDescriptor().getFields();
 		  
 		    
-		    	System.out.println(list.iterator().next().getType().toString());
+		    	System.out.println(list.contains("gce_instance"));
 		    
 		    
 		 //  System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
