@@ -34,17 +34,14 @@ public class LoggerUtil {
 			label.put("instance_id", instanceId);
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
-			
-			System.out.println("*************"+com.google.api.MonitoredResource.getDefaultInstance().getType());
-			
+		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 		  // System.out.println("**************"+MetadataConfig.getInstanceId());
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
-		        .setLabels(label)
-		        .setResource(MonitoredResource.newBuilder("gce_instance").build())
+		        .setResource(MonitoredResource.newBuilder("gce_instance").setLabels(label).build())
 		        .build();
 		    logging.write(Collections.singleton(entry));
 		  }
