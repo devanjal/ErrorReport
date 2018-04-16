@@ -42,7 +42,7 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ResourceInfo.getDescriptor().getFullName().toString());
+		   System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
 		   
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
