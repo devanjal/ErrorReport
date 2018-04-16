@@ -1,11 +1,13 @@
 package com.demo.error;
 
 import com.google.cloud.MonitoredResource;
+import com.google.cloud.MonitoredResourceDescriptor;
 import com.google.cloud.logging.LogEntry;
 import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
+import com.google.monitoring.v3.MonitoredResourceDescriptorNameType;
 import com.google.cloud.MetadataConfig;
 
 import java.util.Collections;
@@ -36,7 +38,9 @@ public class LoggerUtil {
 			label.put("zone", instanceZone);
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		  // System.out.println("**************"+MetadataConfig.getInstanceId());
+		   System.out.println("**************"+MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString());
+		    
+		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
