@@ -40,7 +40,7 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 			
-			ResourceInfo.newBuilder().getResourceName()
+//			ResourceInfo.newBuilder().getResourceName()
 			
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
