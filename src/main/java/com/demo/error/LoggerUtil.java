@@ -1,7 +1,6 @@
 package com.demo.error;
 
-import com.google.api.services.compute.model.Instance;
-import com.google.api.services.compute.model.Project;
+
 import com.google.cloud.MetadataConfig;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
@@ -9,7 +8,6 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
-import com.google.rpc.ResourceInfo;
 
 
 
@@ -47,7 +45,7 @@ public class LoggerUtil {
 			
 
 		    // TODO: Change code below to process the `response` object:
-		    System.out.println(response);
+		 //   System.out.println(response);
 			
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
