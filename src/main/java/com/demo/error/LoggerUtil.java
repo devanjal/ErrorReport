@@ -1,5 +1,7 @@
 package com.demo.error;
 
+import com.google.api.services.compute.model.Instance;
+import com.google.api.services.compute.model.Project;
 import com.google.cloud.MetadataConfig;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
@@ -40,10 +42,17 @@ public class LoggerUtil {
 			
 //			ResourceInfo.newBuilder().getResourceName()
 			
+			//String project_Id = "my-project-id"; // TODO: Update placeholder value.
+
+			
+
+		    // TODO: Change code below to process the `response` object:
+		    System.out.println(response);
+			
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ResourceInfo.newBuilder().getResourceName()+ "***********"+ ResourceInfo.newBuilder().getResourceType());
+		   System.out.println("**************"+MetadataConfig.getClusterName());
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
