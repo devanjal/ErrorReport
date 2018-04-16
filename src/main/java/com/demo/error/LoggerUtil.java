@@ -45,12 +45,8 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		    
-		    List<FieldDescriptor> list =ResourceInfo.getDescriptor().getFields();
-		  
-		    
-		    	System.out.println(list.contains("gce_instance"));
-		    
+		   
+		  System.out.println(  LoggingOptions.getDefaultInstance().getRpc().toString());
 		    
 		 //  System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
 		   
