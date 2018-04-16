@@ -35,10 +35,10 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 			
-			System.out.println(com.google.api.MonitoredResource.getDefaultInstance().getType());
+			System.out.println("*************"+com.google.api.MonitoredResource.getDefaultInstance().getType());
 			
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+MetadataConfig.getInstanceId());
+		  // System.out.println("**************"+MetadataConfig.getInstanceId());
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
