@@ -1,7 +1,5 @@
 package com.demo.error;
 
-
-import com.google.api.client.util.Value;
 import com.google.cloud.MetadataConfig;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
@@ -9,14 +7,9 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
-import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.rpc.ResourceInfo;
-import com.google.cloud.MonitoredResourceDescriptor;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 public class LoggerUtil {
 	
@@ -34,7 +27,6 @@ public class LoggerUtil {
 
 		public void log(Severity level, String appName, String message) throws Exception {
 			
-		//	System.out.println(logSwitch);
 			
 			String instanceId=MetadataConfig.getInstanceId();
 			String instanceZone=MetadataConfig.getZone();
@@ -46,7 +38,7 @@ public class LoggerUtil {
 			label.put("zone", instanceZone);
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
 		   
-		  System.out.println(  LoggingOptions.getDefaultInstance().getRpc().toString());
+		
 		    
 		 //  System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
 		   
@@ -54,7 +46,8 @@ public class LoggerUtil {
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
-		        .setResource(MonitoredResource.newBuilder("gce_instance").setLabels(label).build())
+		        .setResource(MonitoredResource.newBuilder("")
+		        				.setLabels(label).build())
 		        .build();
 		    logging.write(Collections.singleton(entry));
 		  }
