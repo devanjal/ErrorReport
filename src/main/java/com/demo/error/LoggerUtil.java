@@ -7,9 +7,7 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
-import com.google.devtools.clouderrorreporting.v1beta1.ServiceContext;
 import com.google.rpc.ResourceInfo;
-import com.google.api.services.*;
 
 
 
