@@ -9,11 +9,14 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.rpc.ResourceInfo;
 import com.google.cloud.MonitoredResourceDescriptor;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class LoggerUtil {
 	
@@ -42,7 +45,14 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
+		    
+		    List<FieldDescriptor> list =ResourceInfo.getDescriptor().getFields();
+		  
+		    while(list.iterator().hasNext()) {
+		    	System.out.println(list.iterator().next().toString());
+		    }
+		    
+		 //  System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
 		   
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
