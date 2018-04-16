@@ -6,7 +6,17 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
+import com.google.common.io.Resources;
 import com.google.devtools.clouderrorreporting.v1beta1.ServiceContext;
+import com.google.monitoring.v3.GroupNameType;
+import com.google.protobuf.Type;
+import com.google.rpc.ResourceInfo;
+
+import io.grpc.Grpc;
+import io.grpc.Server;
+
+import com.google.api.Service;
+import com.google.api.services.compute.model.Project;
 import com.google.cloud.MetadataConfig;
 import com.google.cloud.ServiceOptions;
 
@@ -42,7 +52,7 @@ public class LoggerUtil {
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ServiceContext.getDefaultInstance().getResourceType());
+		   System.out.println("**************"+ResourceInfo.getDefaultInstance().getResourceType());
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
