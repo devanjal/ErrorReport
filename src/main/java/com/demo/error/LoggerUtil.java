@@ -1,5 +1,6 @@
 package com.demo.error;
 
+import com.google.api.Service;
 import com.google.api.services.compute.model.Instance;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
@@ -13,7 +14,6 @@ import java.util.Collections;
 public class LoggerUtil {
 	
 	 private static LoggerUtil instance = null;
-	 private static Instance instanceId = new Instance();
 	   protected LoggerUtil() {
 		   
 	   }
@@ -27,7 +27,7 @@ public class LoggerUtil {
 		public void log(Severity level, String appName, String message) throws Exception {
 			
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+instanceId.getId());
+		   System.out.println("**************"+Service.getDefaultInstance().getId());
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
