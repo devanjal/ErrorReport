@@ -20,17 +20,7 @@
       <artifactId>google-cloud-monitoring</artifactId>
       <version>0.34.0-beta</version>
     </dependency>
-    <dependency>
-  <groupId>com.google.cloud</groupId>
-  <artifactId>google-cloud-monitoring</artifactId>
-  <version>0.42.1-beta</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-monitoring -->
-<dependency>
-    <groupId>com.google.apis</groupId>
-    <artifactId>google-api-services-monitoring</artifactId>
-    <version>v3-rev406-1.22.0</version>
-</dependency>
+
 
   </dependencies>
   
