@@ -8,6 +8,7 @@ import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
 import com.google.monitoring.v3.MonitoredResourceDescriptorNameType;
+import com.google.protobuf.Option;
 import com.google.cloud.MetadataConfig;
 
 import java.util.Collections;
@@ -36,9 +37,13 @@ public class LoggerUtil {
 			label.put("instance_id", instanceId);
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
+			
+			
+			
+			   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString());
+		   System.out.println("**************"+resource);
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
