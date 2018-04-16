@@ -1,6 +1,7 @@
 package com.demo.error;
 
 
+import com.google.api.client.util.Value;
 import com.google.cloud.MetadataConfig;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
@@ -9,13 +10,14 @@ import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
 
-
-
 import java.util.Collections;
 import java.util.HashMap;
 public class LoggerUtil {
 	
 	 private static LoggerUtil instance = null;
+	 
+	 @Value("${logger.switch}")
+	 private String logSwitch;
 	 
 	   protected LoggerUtil() {
 		   
@@ -29,6 +31,8 @@ public class LoggerUtil {
 
 		public void log(Severity level, String appName, String message) throws Exception {
 			
+			System.out.println(logSwitch);
+			
 			String instanceId=MetadataConfig.getInstanceId();
 			String instanceZone=MetadataConfig.getZone();
 			String projectId=MetadataConfig.getProjectId();
@@ -37,22 +41,11 @@ public class LoggerUtil {
 			label.put("instance_id", instanceId);
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
-			
-//			ResourceInfo.newBuilder().getResourceName()
-			
-			//String project_Id = "my-project-id"; // TODO: Update placeholder value.
-
-			
-
-		    // TODO: Change code below to process the `response` object:
-		 //   System.out.println(response);
-			
-			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
+		
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+MetadataConfig.getClusterName());
-		    
-		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
+		   System.out.println("**************"+MetadataConfig.getInstanceId());
+		   
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
