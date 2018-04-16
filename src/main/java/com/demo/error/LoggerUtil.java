@@ -1,24 +1,17 @@
 package com.demo.error;
 
+import com.google.cloud.MetadataConfig;
 import com.google.cloud.MonitoredResource;
 import com.google.cloud.logging.LogEntry;
 import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
-import com.google.common.io.Resources;
 import com.google.devtools.clouderrorreporting.v1beta1.ServiceContext;
-import com.google.monitoring.v3.GroupNameType;
-import com.google.protobuf.Type;
 import com.google.rpc.ResourceInfo;
+import com.google.api.services.*;
 
-import io.grpc.Grpc;
-import io.grpc.Server;
 
-import com.google.api.Service;
-import com.google.api.services.compute.model.Project;
-import com.google.cloud.MetadataConfig;
-import com.google.cloud.ServiceOptions;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -47,12 +40,12 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 			
-			
+			ResourceInfo.newBuilder().getResourceName()
 			
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ResourceInfo.getDescriptor().findFieldByNumber(0));
+		   System.out.println("**************"+ResourceInfo.newBuilder().getResourceName()+ "***********"+ ResourceInfo.newBuilder().getResourceType());
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
