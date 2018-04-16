@@ -48,9 +48,9 @@ public class LoggerUtil {
 		    
 		    List<FieldDescriptor> list =ResourceInfo.getDescriptor().getFields();
 		  
-		    while(list.iterator().hasNext()) {
-		    	System.out.println(list.iterator().next().toString());
-		    }
+		    
+		    	System.out.println(list.iterator().next().getType().toString());
+		    
 		    
 		 //  System.out.println("**************"+ResourceInfo.getDescriptor().getFields().isEmpty());
 		   
