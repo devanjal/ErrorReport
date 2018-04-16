@@ -13,7 +13,7 @@ import java.util.Collections;
 public class LoggerUtil {
 	
 	 private static LoggerUtil instance = null;
-	 private static Instance instanceId;
+	 private static Instance instanceId = new Instance();
 	   protected LoggerUtil() {
 		   
 	   }
