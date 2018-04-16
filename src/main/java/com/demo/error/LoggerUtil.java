@@ -9,6 +9,7 @@ import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
+import com.google.rpc.ResourceInfo;
 import com.google.cloud.MonitoredResourceDescriptor;
 
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class LoggerUtil {
 			label.put("project_id", projectId);
 			label.put("zone", instanceZone);
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+MetadataConfig.getInstanceId());
+		   System.out.println("**************"+ResourceInfo.getDescriptor().getFullName().toString()));
 		   
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))

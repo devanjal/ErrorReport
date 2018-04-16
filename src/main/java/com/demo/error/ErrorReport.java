@@ -1,7 +1,6 @@
 package com.demo.error;
 
 
-import com.google.api.services.compute.*;
 import com.google.cloud.logging.Severity;
 
 public class ErrorReport {
