@@ -41,7 +41,7 @@ public class LoggerUtil {
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
-		        .setResource(MonitoredResource.newBuilder("default").setLabels(label).build())
+		        .setResource(MonitoredResource.newBuilder("global").setLabels(label).build())
 		        .build();
 		    logging.write(Collections.singleton(entry));
 		  }
