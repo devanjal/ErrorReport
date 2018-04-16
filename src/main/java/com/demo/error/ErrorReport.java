@@ -1,6 +1,7 @@
 package com.demo.error;
 
 
+import com.google.api.services.compute.*;
 import com.google.cloud.logging.Severity;
 
 public class ErrorReport {
@@ -26,11 +27,7 @@ public class ErrorReport {
 		writer.writeStatsData("devanjal", "wise-diagram-197921", 11111111, "site_count", "MID");
 		
 		
-		
 		reporter.report(ErrorReport.class.getName(), 27, methodName, "Report Error Message in wise-diagram-197921", appName);
-		
-		
-		
 		
 		
 		logger.log(Severity.ERROR, appName, "ERROR part");
