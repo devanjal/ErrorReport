@@ -52,7 +52,7 @@ public class LoggerUtil {
 			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+ResourceInfo.getDescriptor());
+		   System.out.println("**************"+ResourceInfo.getDescriptor().findFieldByNumber(0));
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
