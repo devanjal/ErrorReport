@@ -1,15 +1,14 @@
 package com.demo.error;
 
 import com.google.cloud.MonitoredResource;
-import com.google.cloud.MonitoredResourceDescriptor;
 import com.google.cloud.logging.LogEntry;
 import com.google.cloud.logging.Logging;
 import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
-import com.google.monitoring.v3.MonitoredResourceDescriptorNameType;
-import com.google.protobuf.Option;
+import com.google.devtools.clouderrorreporting.v1beta1.ServiceContext;
 import com.google.cloud.MetadataConfig;
+import com.google.cloud.ServiceOptions;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,17 +39,17 @@ public class LoggerUtil {
 			
 			
 			
-			   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
+			//   MonitoredResource resource = MonitoredResource.fromPb(com.google.api.MonitoredResource.getDefaultInstance().getDefaultInstanceForType());
 		
 		    Logging logging = LoggingOptions.getDefaultInstance().getService();
-		   System.out.println("**************"+resource);
+		   System.out.println("**************"+ServiceContext.getDefaultInstance().getResourceType());
 		    
 		  //  MonitoredResourceDescriptor.LabelDescriptor.ValueType.STRING.toString();
 		    
 		    LogEntry entry = LogEntry.newBuilder(StringPayload.of(message))
 		        .setSeverity(level)
 		        .setLogName(appName)
-		        .setResource(MonitoredResource.newBuilder("global").setLabels(label).build())
+		        .setResource(MonitoredResource.newBuilder("gce_instance").setLabels(label).build())
 		        .build();
 		    logging.write(Collections.singleton(entry));
 		  }
